@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kaistie/screens/sign_up_screen.dart';
 
 void main() {
   runApp(const Kaistie());
@@ -13,16 +14,10 @@ class Kaistie extends StatelessWidget {
       title: 'KAISTIE',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        backgroundColor: Colors.white,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'KAISTIE',
-          ),
-        ),
-        body: Container(
-          color: Colors.white,
-        ),
+      home: const Scaffold(
+        body: SignUpScreen(),
       ),
     );
   }
