@@ -100,18 +100,20 @@ class CustomTextField extends StatelessWidget {
               ),
               enabledBorder: error
                   ? OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(4.0),
                       borderSide: BorderSide(
                         color: colorScheme.error,
                       ),
                     )
                   : OutlineInputBorder(
-                      borderRadius: BorderRadius.zero,
+                      borderRadius: BorderRadius.circular(4.0),
                       borderSide: BorderSide(
                         color: colorScheme.onSurface,
                       ),
                     ),
               focusedBorder: error
                   ? OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(4.0),
                       borderSide: BorderSide(
                         color: colorScheme.error,
                       ),
