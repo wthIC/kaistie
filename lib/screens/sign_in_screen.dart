@@ -57,10 +57,58 @@ class SignInScreen extends StatelessWidget {
                   label: 'Password',
                   disableNext: false,
                 ),
-                const SizedBox(height: 16.0),
+                const SizedBox(height: 4.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const Text(
+                      'Forgot your password?',
+                      style: TextStyle(
+                        fontSize: 10.0,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Reset',
+                        style: TextStyle(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 4.0),
                 CustomButton(
                   onTap: () {},
                   buttonText: 'Continue',
+                ),
+                const SizedBox(height: 4.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const Text(
+                      'Don\'t have an account?',
+                      style: TextStyle(
+                        fontSize: 10.0,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Sign Up',
+                        style: TextStyle(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
