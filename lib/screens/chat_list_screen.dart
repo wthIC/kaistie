@@ -6,7 +6,6 @@ class ChatListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
     return SafeArea(
       child: GestureDetector(
         onTap: () {
@@ -16,7 +15,7 @@ class ChatListScreen extends StatelessWidget {
           backgroundColor: const Color(0xFFEDF0F7),
           appBar: AppBar(
             leading: IconButton(
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
               onPressed: () {},
             ),
             centerTitle: false,
@@ -34,7 +33,7 @@ class ChatListScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       top: 16.0,
                       bottom: 16.0,
                       left: 24.0,
@@ -50,7 +49,7 @@ class ChatListScreen extends StatelessWidget {
                         const SizedBox(width: 16.0),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+                          children: const [
                             Text(
                               'Lee Jiwoo',
                               style: TextStyle(
@@ -76,7 +75,7 @@ class ChatListScreen extends StatelessWidget {
                     color: Colors.grey,
                   ),
                   Container(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       top: 16.0,
                       bottom: 16.0,
                       left: 24.0,
@@ -92,7 +91,7 @@ class ChatListScreen extends StatelessWidget {
                         const SizedBox(width: 16.0),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+                          children: const [
                             Text(
                               'Jane Smith',
                               style: TextStyle(

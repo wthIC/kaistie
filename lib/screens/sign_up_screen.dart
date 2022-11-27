@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:intl/intl.dart';
 import 'package:kaistie/components/custom_button.dart';
 import 'package:kaistie/components/custom_text_field.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:kaistie/screens/sign_in_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -19,38 +18,44 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: GestureDetector(
-        onTap: () {
-          FocusManager.instance.primaryFocus?.unfocus();
-        },
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: (stage == 0)
-                ? FirstStage(onTap: () {
-                    setState(() {
-                      stage = 1;
-                    });
-                  })
-                : (stage == 1)
-                    ? SecondStage(
-                        onTap: () {
-                          setState(() {
-                            stage = 2;
-                          });
-                        },
-                      )
-                    : ThirdStage(
-                        onTap: () {
-                          setState(() {
-                            stage = 0;
-                          });
-                        },
-                      ),
-          ),
-        ),
-      ),
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: Scaffold(
+            body: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: (stage == 0)
+                    ? FirstStage(onTap: () {
+                        setState(() {
+                          stage = 1;
+                        });
+                      })
+                    : (stage == 1)
+                        ? SecondStage(
+                            onTap: () {
+                              setState(() {
+                                stage = 2;
+                              });
+                            },
+                          )
+                        : ThirdStage(
+                            onTap: () {
+                              setState(() {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const SignInScreen(),
+                                  ),
+                                );
+                              });
+                            },
+                          ),
+              ),
+            ),
+          )),
     );
   }
 }
@@ -147,10 +152,6 @@ class SecondStage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController dateInputController = TextEditingController();
-    final TextTheme textTheme = Theme.of(context).textTheme;
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
-
     return Column(
       children: [
         const SizedBox(height: 40.0),
@@ -218,7 +219,7 @@ class SecondStage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 4.0),
-            GenderSelection(),
+            const GenderSelection(),
           ],
         ),
         const SizedBox(height: 16.0),

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
     return SafeArea(
       child: GestureDetector(
         onTap: () {
@@ -16,13 +14,13 @@ class ChatScreen extends StatelessWidget {
           backgroundColor: const Color(0xFFEDF0F7),
           appBar: AppBar(
             leading: IconButton(
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
               onPressed: () {},
             ),
             centerTitle: false,
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Text(
                   'Lee Jiwoo',
                   style: TextStyle(
@@ -50,12 +48,12 @@ class ChatScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Container(
-                        padding: EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(6.0),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Hi, want to be roommates?',
                           style: TextStyle(
                             fontSize: 16.0,
@@ -65,18 +63,18 @@ class ChatScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        padding: EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(6.0),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Yes!',
                           style: TextStyle(
                             fontSize: 16.0,
