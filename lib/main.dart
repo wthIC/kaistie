@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kaistie/screens/chat_list_screen.dart';
 import 'package:kaistie/screens/chat_screen.dart';
 import 'package:kaistie/screens/my_page_match_screen.dart';
 import 'package:kaistie/screens/my_page_self_screen.dart';
@@ -35,7 +36,7 @@ class Kaistie extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
       ),
-      home: ChatScreen(),
+      home: ChatListScreen(),
     );
   }
 }

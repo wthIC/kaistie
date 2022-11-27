@@ -1,0 +1,139 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+class ChatListScreen extends StatelessWidget {
+  const ChatListScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    return SafeArea(
+      child: GestureDetector(
+        onTap: () {
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        child: Scaffold(
+          backgroundColor: const Color(0xFFEDF0F7),
+          appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {},
+            ),
+            centerTitle: false,
+            title: const Text(
+              'Chats',
+              style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          body: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: SizedBox(
+              child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(
+                      top: 16.0,
+                      bottom: 16.0,
+                      left: 24.0,
+                    ),
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          'assets/icon-image.svg',
+                          height: 40.0,
+                          width: 40.0,
+                          fit: BoxFit.scaleDown,
+                        ),
+                        const SizedBox(width: 16.0),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Lee Jiwoo',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            Text(
+                              'Yes!',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 1,
+                    color: Colors.grey,
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(
+                      top: 16.0,
+                      bottom: 16.0,
+                      left: 24.0,
+                    ),
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          'assets/icon-image.svg',
+                          height: 40.0,
+                          width: 40.0,
+                          fit: BoxFit.scaleDown,
+                        ),
+                        const SizedBox(width: 16.0),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Jane Smith',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            Text(
+                              'Thanks for letting me know :)',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person_add_alt_outlined),
+                label: 'Find Matches',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home_outlined),
+                label: 'My Page',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.mail_outlined),
+                label: 'Chat Rooms',
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
