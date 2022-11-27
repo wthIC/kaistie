@@ -36,7 +36,7 @@ class Kaistie extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
       ),
-      home: const SignUpScreen(),
+      home: const MyPageMatch(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:kaistie/components/custom_bottom_navigation_bar.dart';
 
 class ChatListScreen extends StatelessWidget {
   const ChatListScreen({Key? key}) : super(key: key);
@@ -115,21 +116,8 @@ class ChatListScreen extends StatelessWidget {
               ),
             ),
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person_add_alt_outlined),
-                label: 'Find Matches',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined),
-                label: 'My Page',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.mail_outlined),
-                label: 'Chat Rooms',
-              ),
-            ],
+          bottomNavigationBar: const CustomBottomNavigationBar(
+            currentIndex: 2,
           ),
         ),
       ),
