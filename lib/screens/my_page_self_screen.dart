@@ -121,6 +121,7 @@ class MyPageSelf extends StatelessWidget {
                   ),
                   const SizedBox(height: 8.0),
                   Container(
+                    width: double.infinity,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(
