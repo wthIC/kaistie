@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kaistie/screens/chat_list_screen.dart';
+import 'package:kaistie/screens/find_matches_screen.dart';
 import 'package:kaistie/screens/my_page_self_screen.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
@@ -22,7 +23,12 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       currentIndex: widget.currentIndex,
       onTap: (int index) {
         if (index == 0) {
-          //Make matches screen
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const FindMatchesScreen(),
+            ),
+          );
         } else if (index == 1) {
           Navigator.pushReplacement(
             context,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kaistie/screens/chat_list_screen.dart';
 import 'package:kaistie/screens/chat_screen.dart';
+import 'package:kaistie/screens/find_matches_screen.dart';
 import 'package:kaistie/screens/my_page_match_screen.dart';
 import 'package:kaistie/screens/my_page_self_screen.dart';
 import 'package:kaistie/screens/sign_in_screen.dart';
@@ -36,7 +37,7 @@ class Kaistie extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
       ),
-      home: const MyPageMatch(),
+      home: const FindMatchesScreen(),
     );
   }
 }
