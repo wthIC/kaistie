@@ -70,6 +70,40 @@ class TestScreen extends StatelessWidget {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
+                        const SizedBox(height: 8.0),
+                        RichText(
+                          text: const TextSpan(
+                            children: [
+                              TextSpan(
+                                text: '(Questions with ',
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              TextSpan(
+                                text: '* ',
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.red,
+                                ),
+                              ),
+                              TextSpan(
+                                text: 'are mandatory)',
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        QuestionEntry(),
+                        const SizedBox(height: 24.0),
+                        QuestionEntry(),
                         const Expanded(
                           child: SizedBox(),
                         ),
@@ -86,6 +120,102 @@ class TestScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class QuestionEntry extends StatefulWidget {
+  const QuestionEntry({Key? key}) : super(key: key);
+
+  @override
+  State<QuestionEntry> createState() => _QuestionEntryState();
+}
+
+class _QuestionEntryState extends State<QuestionEntry> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        RichText(
+          text: const TextSpan(
+            children: [
+              TextSpan(
+                text: '1. When do you go to bed during the week?',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.black,
+                ),
+              ),
+              TextSpan(
+                text: '* ',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.red,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SvgPicture.asset('assets/choice.svg'),
+            const SizedBox(width: 8.0),
+            Text(
+              'Early: between 8pm - 11pm',
+              style: TextStyle(
+                fontSize: 14.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SvgPicture.asset('assets/choice.svg'),
+            const SizedBox(width: 8.0),
+            Text(
+              'Early: between 8pm - 11pm',
+              style: TextStyle(
+                fontSize: 14.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SvgPicture.asset('assets/choice.svg'),
+            const SizedBox(width: 8.0),
+            Text(
+              'Early: between 8pm - 11pm',
+              style: TextStyle(
+                fontSize: 14.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SvgPicture.asset('assets/choice.svg'),
+            const SizedBox(width: 8.0),
+            Text(
+              'Early: between 8pm - 11pm',
+              style: TextStyle(
+                fontSize: 14.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        )
+      ],
     );
   }
 }
