@@ -7,6 +7,7 @@ import 'package:kaistie/screens/my_page_self_screen.dart';
 import 'package:kaistie/screens/sign_in_screen.dart';
 import 'package:kaistie/screens/sign_up_screen.dart';
 import 'package:kaistie/screens/starting_screen.dart';
+import 'package:kaistie/screens/test_screen.dart';
 import 'package:kaistie/screens/test_starting_screen.dart';
 
 void main() {
@@ -38,7 +39,7 @@ class Kaistie extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
       ),
-      home: const TestStartingScreen(),
+      home: const TestScreen(),
     );
   }
 }
