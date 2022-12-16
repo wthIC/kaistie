@@ -39,6 +39,8 @@ dependencies:
   syncfusion_flutter_datepicker: ^20.3.58
   intl: ^0.17.0
   firebase_core: ^2.4.0
+  firebase_auth: ^4.2.1
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:

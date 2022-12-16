@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kaistie/components/custom_button.dart';
 import 'package:kaistie/components/custom_text_field.dart';
 import 'package:kaistie/screens/sign_in_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -70,75 +72,89 @@ class FirstStage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 40.0),
-        Center(
-          child: SvgPicture.asset('assets/kaistie_logo.svg'),
-        ),
-        const SizedBox(height: 16.0),
-        const Text(
-          'Welcome To KAISTIE',
-          style: TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        const SizedBox(height: 16.0),
-        const Text(
-          'Please provide your information',
-          style: TextStyle(
-            fontSize: 14.0,
-            fontWeight: FontWeight.w300,
-          ),
-        ),
-        const SizedBox(height: 30.0),
-        const Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            'Sign Up',
-            style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.w700,
+    return ChangeNotifierProvider(
+      create: (context) => _SignUpScreenModel(),
+      child: Consumer<_SignUpScreenModel>(
+        builder: (context, signUpScreenModel, child) => Column(
+          children: [
+            const SizedBox(height: 40.0),
+            Center(
+              child: SvgPicture.asset('assets/kaistie_logo.svg'),
             ),
-          ),
+            const SizedBox(height: 16.0),
+            const Text(
+              'Welcome To KAISTIE',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            const Text(
+              'Please provide your information',
+              style: TextStyle(
+                fontSize: 14.0,
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+            const SizedBox(height: 30.0),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Sign Up',
+                style: TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            CustomTextField(
+              onChanged: (String value) {
+                signUpScreenModel._fullName = value;
+              },
+              placeholder: 'Enter your Full Name',
+              label: 'Full Name',
+              disableNext: false,
+              required: true,
+            ),
+            const SizedBox(height: 16.0),
+            CustomTextField(
+              onChanged: (String value) {
+                signUpScreenModel._email = value;
+              },
+              placeholder: 'Enter your Email',
+              label: 'Email',
+              disableNext: false,
+              required: true,
+            ),
+            const SizedBox(height: 16.0),
+            CustomTextField(
+              onChanged: (String value) {
+                signUpScreenModel._password = value;
+              },
+              placeholder: 'Enter your password',
+              label: 'Create password',
+              disableNext: false,
+              required: true,
+              obscureText: true,
+            ),
+            const SizedBox(height: 16.0),
+            const CustomTextField(
+              placeholder: 'Enter your password again',
+              label: 'Confirm password',
+              disableNext: true,
+              required: true,
+              obscureText: true,
+            ),
+            const SizedBox(height: 40.0),
+            CustomButton(
+              onTap: onTap,
+              buttonText: 'Continue',
+            ),
+          ],
         ),
-        const SizedBox(height: 16.0),
-        const CustomTextField(
-          placeholder: 'Enter your Full Name',
-          label: 'Full Name',
-          disableNext: false,
-          required: true,
-        ),
-        const SizedBox(height: 16.0),
-        const CustomTextField(
-          placeholder: 'Enter your Email',
-          label: 'Email',
-          disableNext: false,
-          required: true,
-        ),
-        const SizedBox(height: 16.0),
-        const CustomTextField(
-          placeholder: 'Enter your password',
-          label: 'Create password',
-          disableNext: false,
-          required: true,
-          obscureText: true,
-        ),
-        const SizedBox(height: 16.0),
-        const CustomTextField(
-          placeholder: 'Enter your password again',
-          label: 'Confirm password',
-          disableNext: true,
-          required: true,
-          obscureText: true,
-        ),
-        const SizedBox(height: 40.0),
-        CustomButton(
-          onTap: onTap,
-          buttonText: 'Continue',
-        ),
-      ],
+      ),
     );
   }
 }
@@ -391,5 +407,26 @@ class ThirdStage extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class _SignUpScreenModel extends ChangeNotifier {
+  String _fullName = "";
+  String _email = "";
+  String _password = "";
+
+  set fullName(String value) {
+    _fullName = value;
+    notifyListeners();
+  }
+
+  set email(String value) {
+    _email = value;
+    notifyListeners();
+  }
+
+  set password(String value) {
+    _password = value;
+    notifyListeners();
   }
 }
