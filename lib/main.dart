@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:kaistie/screens/chat_list_screen.dart';
-import 'package:kaistie/screens/chat_screen.dart';
-import 'package:kaistie/screens/find_matches_screen.dart';
-import 'package:kaistie/screens/my_page_match_screen.dart';
-import 'package:kaistie/screens/my_page_self_screen.dart';
 import 'package:kaistie/screens/sign_in_screen.dart';
-import 'package:kaistie/screens/sign_up_screen.dart';
-import 'package:kaistie/screens/starting_screen.dart';
-import 'package:kaistie/screens/test_screen.dart';
-import 'package:kaistie/screens/test_starting_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const Kaistie());
 }
 
@@ -39,7 +36,7 @@ class Kaistie extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
       ),
-      home: const TestScreen(),
+      home: const SignInScreen(),
     );
   }
 }

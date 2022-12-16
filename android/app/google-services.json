@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "267122964194",
+    "project_id": "kaistie-37f8d",
+    "storage_bucket": "kaistie-37f8d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267122964194:android:3efacf2f017fd8e72ed0bb",
+        "android_client_info": {
+          "package_name": "com.example.kaistie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267122964194-qj80cvr4g1u9j9b5k66t0tcjivqi8gps.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCWvAFfQP5xUrF8EppzxAnARU00HSNw_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "267122964194-qj80cvr4g1u9j9b5k66t0tcjivqi8gps.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "267122964194-n0eo6tmrvnmdmpj6v4rj6aapcft0ajpt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.kaistie"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
