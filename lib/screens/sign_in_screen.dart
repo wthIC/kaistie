@@ -1,4 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,6 +7,7 @@ import 'package:kaistie/components/custom_button.dart';
 import 'package:kaistie/components/custom_text_field.dart';
 import 'package:kaistie/screens/find_matches_screen.dart';
 import 'package:kaistie/screens/sign_up_screen.dart';
+import 'package:kaistie/screens/test_screen.dart';
 import 'package:provider/provider.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -174,6 +176,24 @@ class _SignInScreenModel extends ChangeNotifier {
       BotToast.showText(text: e.code);
       return;
     }
+
+    final User user = FirebaseAuth.instance.currentUser!;
+    print(user.uid);
+
+    final docUser =
+        FirebaseFirestore.instance.collection('users').doc(user.uid);
+
+    var current = docUser.get().then((value) {
+      var fields = value.data();
+      if (fields!['testAnswers'][0] == 0) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => TestScreen(),
+          ),
+        );
+      }
+    });
 
     Navigator.pushReplacement(
       context,
