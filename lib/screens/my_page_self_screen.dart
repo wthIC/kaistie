@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:kaistie/components/custom_bottom_navigation_bar.dart';
+import 'package:kaistie/screens/sign_in_screen.dart';
 
 class MyPageSelf extends StatelessWidget {
   const MyPageSelf({Key? key}) : super(key: key);
@@ -144,17 +146,25 @@ class MyPageSelf extends StatelessWidget {
                   ),
                   const SizedBox(height: 24.0),
                   _CustomButton(
-                    textColor: Colors.black,
-                    onTap: () {},
-                    color: const Color(0xFFCBD2E0),
-                    buttonText: 'Edit Profile',
-                  ),
-                  const SizedBox(height: 24.0),
-                  _CustomButton(
                     textColor: Colors.white,
                     onTap: () {},
                     color: colorScheme.primary,
                     buttonText: 'Take Roommate Compatibility Test',
+                  ),
+                  const SizedBox(height: 24.0),
+                  _CustomButton(
+                    textColor: Colors.black,
+                    onTap: () {
+                      FirebaseAuth.instance.signOut();
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignInScreen(),
+                        ),
+                      );
+                    },
+                    color: const Color(0xFFCBD2E0),
+                    buttonText: 'Sign Out',
                   ),
                 ],
               ),

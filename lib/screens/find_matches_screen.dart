@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kaistie/components/custom_bottom_navigation_bar.dart';
+import 'package:kaistie/screens/chat_screen.dart';
 
 class FindMatchesScreen extends StatelessWidget {
   const FindMatchesScreen({Key? key}) : super(key: key);
@@ -126,7 +127,7 @@ class _MatchEntry extends StatelessWidget {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                        Text(
+                        const Text(
                           'I love pizza',
                           style: TextStyle(
                             fontSize: 12.0,
@@ -136,7 +137,15 @@ class _MatchEntry extends StatelessWidget {
                       ],
                     ),
                     _CustomButton(
-                      onTap: () {},
+                      onTap: () {
+                        print('pushed');
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ChatScreen(),
+                          ),
+                        );
+                      },
                       color: const Color(0xFFCBD2E0),
                       textColor: Colors.black,
                       buttonText: 'Chat',
