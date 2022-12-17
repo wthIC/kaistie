@@ -1,7 +1,9 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kaistie/components/custom_button.dart';
 import 'package:kaistie/components/custom_text_field.dart';
+import 'package:kaistie/screens/find_matches_screen.dart';
 import 'package:kaistie/screens/sign_in_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
@@ -424,15 +426,21 @@ class _SignUpScreenModel extends ChangeNotifier {
   }
 
   Future signUp(BuildContext context) async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: _email,
-      password: _password,
-    );
+    try {
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _email,
+        password: _password,
+      );
+    } on FirebaseAuthException catch (e) {
+      BotToast.showText(text: e.code);
+      return;
+    }
 
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => SignInScreen(),
+        builder: (context) => FindMatchesScreen(),
       ),
     );
   }

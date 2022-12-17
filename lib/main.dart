@@ -1,3 +1,4 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:kaistie/screens/sign_in_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,6 +18,10 @@ class Kaistie extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: BotToastInit(),
+      navigatorObservers: [
+        BotToastNavigatorObserver(),
+      ],
       title: 'KAISTIE',
       theme: ThemeData(
         primarySwatch: const MaterialColor(
