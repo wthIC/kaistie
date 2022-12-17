@@ -17,8 +17,10 @@ class CustomTextField extends StatelessWidget {
     this.inputFormatters,
     this.disableNext = false,
     this.initialValue = '',
+    required this.controller,
   }) : super(key: key);
 
+  final TextEditingController controller;
   final Function(String)? onChanged;
   final String? label;
   final String placeholder;
@@ -81,11 +83,11 @@ class CustomTextField extends StatelessWidget {
         SizedBox(
           height: 56.0,
           child: TextFormField(
+            controller: controller,
             textInputAction:
                 disableNext ? TextInputAction.done : TextInputAction.next,
             keyboardType:
                 textInputType ?? (numberOnly ? TextInputType.number : null),
-            initialValue: initialValue,
             inputFormatters: inputFormatters,
             enabled: editable,
             obscureText: obscureText,

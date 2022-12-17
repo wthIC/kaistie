@@ -9,6 +9,8 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _emailC = TextEditingController();
+    final _passwordC = TextEditingController();
     return SafeArea(
       child: GestureDetector(
         onTap: () {
@@ -46,13 +48,15 @@ class SignInScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16.0),
-                  const CustomTextField(
+                  CustomTextField(
+                    controller: _emailC,
                     placeholder: 'Enter your information',
                     label: 'Email or phone number',
                     disableNext: false,
                   ),
                   const SizedBox(height: 16.0),
-                  const CustomTextField(
+                  CustomTextField(
+                    controller: _passwordC,
                     placeholder: 'Enter your password',
                     label: 'Password',
                     disableNext: false,
