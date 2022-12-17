@@ -63,6 +63,17 @@ class FindMatchesScreen extends StatelessWidget {
                           ? _MatchEntry(
                               fullName: streamSnapshot.data!.docs[index]
                                   ['fullName'],
+                              onTap: () {
+                                print('pushed');
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ChatScreen(
+                                      to: streamSnapshot.data!.docs[index],
+                                    ),
+                                  ),
+                                );
+                              },
                             )
                           : const SizedBox();
                     });
@@ -82,9 +93,11 @@ class _MatchEntry extends StatelessWidget {
   const _MatchEntry({
     Key? key,
     required this.fullName,
+    required this.onTap,
   }) : super(key: key);
 
   final String fullName;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -137,15 +150,7 @@ class _MatchEntry extends StatelessWidget {
                       ],
                     ),
                     _CustomButton(
-                      onTap: () {
-                        print('pushed');
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ChatScreen(),
-                          ),
-                        );
-                      },
+                      onTap: onTap,
                       color: const Color(0xFFCBD2E0),
                       textColor: Colors.black,
                       buttonText: 'Chat',

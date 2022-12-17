@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:kaistie/screens/find_matches_screen.dart';
 
 class ChatScreen extends StatelessWidget {
-  const ChatScreen({Key? key}) : super(key: key);
+  const ChatScreen({
+    Key? key,
+    required this.to,
+  }) : super(key: key);
+
+  final dynamic to;
 
   @override
   Widget build(BuildContext context) {
@@ -15,20 +21,27 @@ class ChatScreen extends StatelessWidget {
           appBar: AppBar(
             leading: IconButton(
               icon: const Icon(Icons.arrow_back),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FindMatchesScreen(),
+                  ),
+                );
+              },
             ),
             centerTitle: false,
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
-                  'Lee Jiwoo',
-                  style: TextStyle(
+                  to['fullName'],
+                  style: const TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                Text(
+                const Text(
                   'Chat Room',
                   style: TextStyle(
                     fontSize: 12.0,
