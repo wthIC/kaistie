@@ -192,14 +192,14 @@ class _SignInScreenModel extends ChangeNotifier {
             builder: (context) => TestScreen(),
           ),
         );
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => FindMatchesScreen(),
+          ),
+        );
       }
     });
-
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => FindMatchesScreen(),
-      ),
-    );
   }
 }

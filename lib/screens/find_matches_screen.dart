@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -37,27 +38,20 @@ class FindMatchesScreen extends StatelessWidget {
               ],
             ),
           ),
-          body: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                children: [
-                  _MatchEntry(),
-                  const SizedBox(height: 16.0),
-                  _MatchEntry(),
-                  const SizedBox(height: 16.0),
-                  _MatchEntry(),
-                  const SizedBox(height: 16.0),
-                  _MatchEntry(),
-                  const SizedBox(height: 16.0),
-                  _MatchEntry(),
-                  const SizedBox(height: 16.0),
-                  _MatchEntry(),
-                  const SizedBox(height: 16.0),
-                  _MatchEntry(),
-                ],
-              ),
+          body: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: StreamBuilder(
+              stream:
+                  FirebaseFirestore.instance.collection('users').snapshots(),
+              builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
+                print(streamSnapshot.data!.docs.length);
+                return ListView.builder(
+                  itemCount: streamSnapshot.data!.docs.length,
+                  itemBuilder: (ctx, index) => _MatchEntry(
+                    fullName: streamSnapshot.data!.docs[index]['fullName'],
+                  ),
+                );
+              },
             ),
           ),
           bottomNavigationBar: const CustomBottomNavigationBar(
@@ -70,11 +64,17 @@ class FindMatchesScreen extends StatelessWidget {
 }
 
 class _MatchEntry extends StatelessWidget {
-  const _MatchEntry({Key? key}) : super(key: key);
+  const _MatchEntry({
+    Key? key,
+    required this.fullName,
+  }) : super(key: key);
+
+  final String fullName;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(bottom: 16.0),
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -104,10 +104,10 @@ class _MatchEntry extends StatelessWidget {
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
-                          'Lee Jiwoo',
-                          style: TextStyle(
+                          fullName,
+                          style: const TextStyle(
                             fontSize: 16.0,
                             fontWeight: FontWeight.w700,
                           ),
