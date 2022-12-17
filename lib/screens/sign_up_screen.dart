@@ -451,6 +451,7 @@ class _SignUpScreenModel extends ChangeNotifier {
     final docUser =
         FirebaseFirestore.instance.collection('users').doc(user.uid);
     final json = {
+      'uid': user.uid,
       'email': _email,
       'fullName': _fullName,
       'gender': _gender,

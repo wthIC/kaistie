@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,13 +45,26 @@ class FindMatchesScreen extends StatelessWidget {
               stream:
                   FirebaseFirestore.instance.collection('users').snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
-                print(streamSnapshot.data!.docs.length);
                 return ListView.builder(
-                  itemCount: streamSnapshot.data!.docs.length,
-                  itemBuilder: (ctx, index) => _MatchEntry(
-                    fullName: streamSnapshot.data!.docs[index]['fullName'],
-                  ),
-                );
+                    itemCount: streamSnapshot.data?.docs.length ?? 0,
+                    itemBuilder: (ctx, index) {
+                      final User user = FirebaseAuth.instance.currentUser!;
+                      print(user.uid);
+
+                      final docUser = FirebaseFirestore.instance
+                          .collection('users')
+                          .doc(user.uid);
+
+                      bool match = true;
+                      return (FirebaseAuth.instance.currentUser!.uid !=
+                                  streamSnapshot.data!.docs[index]['uid'] &&
+                              match)
+                          ? _MatchEntry(
+                              fullName: streamSnapshot.data!.docs[index]
+                                  ['fullName'],
+                            )
+                          : const SizedBox();
+                    });
               },
             ),
           ),
