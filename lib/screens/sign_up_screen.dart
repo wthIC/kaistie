@@ -434,6 +434,12 @@ class _SignUpScreenModel extends ChangeNotifier {
       );
     } on FirebaseAuthException catch (e) {
       BotToast.showText(text: e.code);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SignUpScreen(),
+        ),
+      );
       return;
     }
 
