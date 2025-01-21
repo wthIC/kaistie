@@ -1,17 +1,21 @@
 # kaistie
 
-A new Flutter project.
-
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+**kaistie** is a project developed for the CS350: Introduction to Software Engineering course at KAIST. The goal of the project is to address a common issue faced by KAIST students—finding suitable dorm mates. Many students struggle to understand their potential roommates' habits, such as sleep schedules, smoking preferences, and other lifestyle factors.
 
-A few resources to get you started if this is your first Flutter project:
+**kaistie** provides a solution by offering a **Tinder-like** platform where students can add their preferences and find potential matches for dorm sharing.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Features
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Add and customize your dorm-mate preferences.
+- Browse through potential matches based on compatibility.
+- User-friendly interface inspired by popular matchmaking platforms.
+
+## Technologies Used
+
+- **Framework**: Flutter
+- **Language**: Dart
+- **Platform**: Cross-platform mobile application
+
 # kaistie
